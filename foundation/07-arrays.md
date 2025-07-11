@@ -14,7 +14,6 @@ int numbers[5];
 2. **tamanho implícito**
 ```c
 int arr[] = {1, 2, 3, 4, 5};
-int numbers[];
 ```
 * aqui o compilador conta quantos elementos existem e aloca o espaço exato na memória
 
@@ -28,7 +27,7 @@ de certa forma, é mais legível e seguro (menos chance de errar a contagem) e m
 **use com tamanho fixo `int numbers[x]` quando**
 * não inicializará imediatamente, ou pretendo preencher depois (com `scanf` por exemplo)
 * se deseja o controle exato do tamanho alocado (com arrays grandes ou sensíveis à memória)
-* se trabaçha com arrays parciais ou parcialmente preenchidos
+* se trabalha com arrays parciais ou parcialmente preenchidos
 observe:
 ```c
 int myNumbers[4];
@@ -48,7 +47,7 @@ isso funciona, mas deve-se tomar cuidado pois é fácil esquecer que se deixou p
 int numeros[] = {1, 2, 3};
 ```
 
-> **se você já sabe todos os valores na hora da declaração, prefira deixar o compilador contar
+> **se você já sabe todos os valores na hora da declaração, prefira deixar o compilador contar o espaço a ser alocado na memória
 
 **string literal**
 em arrays de `char` (strings) isso se torna mais prático
@@ -91,7 +90,6 @@ for (int i = 0; i < 4; i++) {
 * isso nos ajuda entender porque usamos `i`, e é justamente para se referir ao index (posição) de um elemento no array
 
 ## retornar tamanho do array
-> nota pessoal
 para retornar o tamanho de um array, temos que fazer uma verdadeira gambiarra usando o método `sizeof`
 * não se esqueça que essa função retorna o tamanho em bytes de um tipo de dado ou variável 
 * o especificador de tipo é o `%zu`

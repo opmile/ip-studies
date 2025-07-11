@@ -78,7 +78,7 @@ printf("%zu\n", sizeof(myFloat));
 printf("%zu\n", sizeof(myDouble));
 printf("%zu\n", sizeof(myChar));
 ```
-* note aqui que usamos especificador de formato `%zu` para imprimir o resultado ao invés de `%d`. isso porque o compilador espera que a função retorne um valor do tipo `size_t`, que é um tipo de inteiro não assinado
+* note aqui que usamos especificador de formato `%zu` para imprimir o resultado ao invés de `%d`. isso porque o compilador espera que a função retorne um valor do tipo `size_t`, que é um *tipo de inteiro não assinado*
 
 saber o tamanho dos tipos de dado nos ajuda a entender o quanto de memória um programa usa. isso é muito importante quando passamos a escrever longos progamas que trabalham com limitação de memória, porque pode afetar tanto performance como eficiência
 * um `char` ocupa 1 byte. um aray de 1000 `char` ocupará 1000 bytes (1KB) de memória

@@ -3,23 +3,23 @@ strings representam um conjunto de caracteres e, em c, são representadas como u
 ```c
 char greetings[] = "hello world";
 ```
-* apesar da sintaxe de `char` pedir aspas simples, para strings, representamos sempre com aspas duplas
+* apesar da sintaxe de `char` pedir aspas simples, para strings, representamos sempre com **aspas duplas**
 
-para a saída de dados de uma string, necessitamos de um novo especificador de formato `%s`
+para a saída de dados de uma string, necessitamos do especificador de formato `%s`
 ```c
 char greetings[] = "hello world";
 printf("%s", greetings);
 ```
 
 ## acesso por índice
-como strings são na verdade arrays em c, podemos acessá-las nos referindo pelo índice
+como strings são na verdade arrays, podemos acessá-las nos referindo pelo índice
 ```c
 char greetings[] = "Hello World!";
 printf("%c", greetings[0]);
 ```
 * note que como aqui queremos um único caractere, devemos usar o especificador de formato `%c`
 
-para modificar strings, seguimos a mesma lógica de acesso por índice que já foi estudada no módulo de arrays
+para modificar strings, seguimos a mesma lógica de acesso por índice
 ```c
 char greetings[] = "hello world!";
 greetings[0] = 'j';
@@ -39,7 +39,7 @@ for (int i = 0; i < length; i++) {
 ```
 
 ## outra forma de declaração
-nos exemplos acima usamos *strings literais* para criar uma variável do tipo string, sendo essa a forma mais comum e fácil de criar string em c
+nos exemplos acima usamos *strings literais* para criar uma variável do tipo string, sendo essa a forma mais comum e fácil de criar string em C
 
 também podemos criar uma string como um conjunto de caracteres. esse exemplo é equivalente aos exemplos anteriores
 ```c
@@ -143,3 +143,34 @@ strcat(frase, "dev");
 
 printf("%s\n", frase);
 ```
+### copiar strings
+para copiar o valor de uma string para outro, podemos usar o método `strcpy()`
+```c
+char str1[20] = "hello world";
+char str2[20];
+
+// copia str1 para str2
+strcpy(str2, str1);
+
+printf("%s\n", str2);
+```
+note que o tamanho de `str2` deve ser suficiente para comportar a copia da string
+
+### comparar strings
+para comparar duas string usamos o método `strcmp()`
+* retorna `0` se as duas strings são iguais, caso contrário, um valor diferente de `0`
+```c
+char str1[] = "hello";
+char str2[] = "hello";
+char str3[] = "hi";
+
+// compara str1 and str2
+printf("%d\n", strcmp(str1, str2)); // 0 - as strings são iguais
+
+// compara str1 e str3
+printf("%d\n", strcmp(str1, str3)); // -4 - as strings não sao iguais
+```
+
+### referência
+https://www.w3schools.com/c/c_ref_string.php
+o link acima exemplifica a lib `<string.h>` com as funções disponíveis para manipulação de strings
