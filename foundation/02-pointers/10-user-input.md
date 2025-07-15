@@ -24,7 +24,7 @@ scanf("%d", &myNum);
 printf("you number is: %d\n", myN);
 ```
 
-a função `scanf()` recebe dois argumentos: o especificador de formato e a referência da variável, que armazena o endereço de memória dessa variável 
+a função `scanf()` recebe dois argumentos: *o especificador de formato* e a *referência da variável*, que armazena o **endereço de memória** dessa variável 
 
 ## múltiplos inputs
 a função `scanf()` aceita múltiplas entradas do usuário
@@ -70,16 +70,16 @@ não definir o tamanho do array e só declará-lo acusa erro de compilação, po
 
 *isso é disperdício de memória?* sim e não
 * criar arrays grandes e usar só 3 letras, sim, estamos subutilizando a memória
-* mas em C, você só precisa reservar a quantidade máxima esperada de caractees - é uma forma de previnir buffer overflow (estouro de memória)
+* mas em C, você só precisa reservar a quantidade máxima esperada de caracteres - é uma forma de previnir buffer overflow (estouro de memória)
 
 em programas reais, o ideal é:
 * definir o tamanho com base no contexto (ex: 100 caracteres para nome completo);
 * ou usar alocação dinâmica com `malloc()` quando precisar de mais flexibilidade
 
 2. **por que não precisamos do operador de referência `&`**
-porque toda string em C é, na real, um ponteiro `char*`. ainda dedicaremos uma sessão especial só para estudar ponteiros
+porque toda string em C é, na real, um ponteiro `char*`
 
-em C, um ponteiro é uma variável especial que armazena o endereço de memória. em vez de guardar um valor diretamente (como `int x = 10`), um ponteiro guarda *onde* esse valor está
+em C, um ponteiro é uma *variável especial que armazena o endereço de memória*. ao invés de guardar um valor diretamente (como `int x = 10`), um ponteiro guarda *onde* esse valor está
 ```c
 int x = 10; // variável que guarda o valor 10
 int* p = &x; // ponteiro para int que guarda endereço de x
@@ -110,7 +110,7 @@ scanf("%d", &idade); // precisamos passar o endereço explicitamente aqui
 * porque `idade` não é um ponteiro, precisamos indicar explicitamente pra função onde ela deve colocar a informação a ser armazenada
 
 ### multiple input strings
-a função `scanf()` tem uma grave limitação: ela considera espaços em branco como um caractere de término, o que significa que só podemos ler o dado string, mesmo que digitemos múltiplas palavras no console
+a função `scanf()` tem uma grave limitação: ela *considera espaços em branco como um caractere de término*, o que significa que só podemos ler uma string, mesmo que digitemos múltiplas palavras no console
 ```c
 char fullName[30];
 
@@ -128,7 +128,7 @@ fgets(nome_do_array, tamanho, stdin);
 ```
 * para o tamanho, usamos `sizeof()` para indicar o tamanho máximo que pode ser lido (inclui o caractere nulo `\0`)
 
-* `stdin` é a abreviação de standard input (entrada padrão), e representa onde o programa lê dados digitados pelo usuário - normalmente o teclado
+* `stdin` é a abreviação de **standard input** (entrada padrão), e representa onde o programa lê dados digitados pelo usuário - normalmente o teclado
     * tecnicamente, `stdin` é uma stream de dados do tipo `FILE *` (um ponteiro para uma estrutura que representa um fluxo de dados), já aberta automaticamente quando o programa começa
 
 ex)
@@ -140,7 +140,7 @@ fgets(frase, sizeof(frase), stdin);
 
 prinf("você digitou: %s\n", frase);
 ```
-*cuidados*: o `fgets()` inclui o caractere de quebra de linha (`\n`) se aind houver espaço no array
+*cuidados*: o `fgets()` inclui o caractere de quebra de linha (`\n`) se ainda houver espaço no array
 ```c
 // entrada: "olá mundo\n"
 char frase[20];

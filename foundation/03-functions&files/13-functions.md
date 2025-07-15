@@ -72,7 +72,7 @@ int main() {
 * `name` é um parâmetro e `Liam`, `Jenny` e `Anja` são os argumentos
 
 ## escopo
-em C, variáveis são visíeis e acessíveis dentro da região onde foram declaradas. essa região é o que chamamos de *escopo*
+em C, variáveis são visíveis e acessíveis dentro da região onde foram declaradas. essa região é o que chamamos de *escopo*
 
 ### escopo local
 uma variável criada dentro de uma função assume escopo local e só pode ser usada dentro da função onde foi criada
