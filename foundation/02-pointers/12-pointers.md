@@ -132,6 +132,8 @@ se `arr` por si só é um ponteiro para o primeiro elemento
 ```c
 arr == &arr[0];
 ```
+* ao ser usado em uma expressão, o nome `arr` decai para ponteiro que aponta para o primeiro elemento
+
 então acessar um elemento com ponteiro é equivalente a 
 ```c
 arr[i] = *(arr + 1);

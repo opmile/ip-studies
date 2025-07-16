@@ -2,12 +2,12 @@
 gerenciamento de memória é o processo de manipular quanta memória um programa usa ao longo de diferentes operações
 
 ## memória em C
-memória é o espaço onde seu programa guarda dados temporariamente enquanto está rodando. ela é volátil - ou seja, tudo se perde quando o programa termina
+memória é o espaço onde seu programa guarda dados temporariamente enquanto está rodando. ela é **volátil** - ou seja, tudo se perde quando o programa termina
 * por isso surge a persistência de dados, que consiste em armazenar dados de alguma forma (em um arquivo `.txt`, `.json`...) para que tenhamos informações salvas das execuções passadas
 
-e na lingaugem C você trabalha a linha de frente com o controle desses espaços - ao contrário de linguagens como Python ou Java (que têm o *garbage collector*)
+e na lingaugem C você trabalha na linha de frente com o controle desses espaços - ao contrário de linguagens como Python ou Java (que têm o *garbage collector*)
 
-quando você cria uma variável comum, C vai automaticamente reservar espaço para essa variável. uma variável inteira int, por exemplo, vai tipicamente ocupar `4` bytes de memória, enquanto uma variável double vai ocupar `8` bytes
+quando você cria uma variável comum, C vai automaticamente reservar espaço para essa variável. uma variável inteira `int`, por exemplo, vai tipicamente ocupar `4` bytes de memória, enquanto uma variável `double` vai ocupar `8` bytes
 
 usamos `sizeof()` para descobrir o tamanho dos diferentes tipos
 ```c
@@ -25,10 +25,9 @@ printf("%zu\n", sizeof(myChar));     // 1 byte
 **por que isso importa?**
 se você criar um programa que ocupa muito ou que usa memória desnecessária, pode resultar em performance lenta
 
-em C, você é quem tem que trabalhar na linha de frente no controle desses espaços, diferente de outras linguagens de programação, como Python ou Java (que tem o *garbage collector*)
-é uma tarefa um pouco complicada mas muito poderosa quando usada corretamente: gerenciar propriamente a memória do computador otimiza a performance do programa, então é útil saber como desocupar memória quando não é mais usada e ocupar apenas o necessário
+é uma tarefa um pouco complicada mas muito poderosa quando usada corretamente: gerenciar propriamente a memória do computador *otimiza a performance do programa*, então é útil saber como desocupar memória quando não é mais usada e ocupar apenas o necessário
 
-em capítulos anteriores, você aprendeu sobre endereços de memória e ponteiros. ambos são de grande importante quando se diz sobre gerenciamento de memória, já que é possível trabalhar diretamente com a mamória atráves de ponteiros
+em capítulos anteriores, você aprendeu sobre endereços de memória e ponteiros. ambos são de grande importante quando se diz sobre gerenciamento de memória, já que é possível *trabalhar diretamente com a mamória atráves de ponteiros*
 
 novamente, tome cuidado! ponteiros devem ser usados com cuidados, já que é possível danificar ou corromper dados armazenados em outros endereços de memória
 
@@ -43,12 +42,12 @@ quando você executa um programa em C, o sistema operacional aloca para ele um e
 ```less
 endereços baixos
 |
-|  [Text Segment]       ← código do programa (instruções compiladas)
-|  [Data Segment]       ← globais/estáticas inicializadas
-|  [BSS Segment]        ← globais/estáticas não inicializadas
-|  [Heap] ↑             ← cresce para cima
+|  [text Segment]       ← código do programa (instruções compiladas)
+|  [data Segment]       ← globais/estáticas inicializadas
+|  [bss Segment]        ← globais/estáticas não inicializadas
+|  [heap] ↑             ← cresce para cima
 |                       ← espaço livre (gap entre heap e stack)
-|  [Stack] ↓            ← cresce para baixo
+|  [stack] ↓            ← cresce para baixo
 |
 endereços altos
 ```
@@ -57,14 +56,17 @@ endereços altos
 * usada para variáveis locais, parâmetros e chamadas de função, endereços de retorno (controle da execução)
 * cresce de endereços altos para baixos (ao contrário da heap)
 * rápida mas limitada em tamanho
-* liberada automaticamente quando a função retorna
+* liberada automaticamente quando a função retorna ("sobe" de volta)
 * gerenciada pelo compilador
 ```c
 int x = 10; // alocado na stack
 ```
 
+quando uma função é chamada, a memória stack aloca espaço para as variáveis locais da função. quando a função retorna, a memória stack é liberada
+* funções recursivas que se repetem muitas vezes podem ocupar muita espaço de memória stack. quando isso acontece, chamamos de **`stack overflow`**
+
 2. **heap (montão)**
-* usada para alocação dinâmica de memória
+* usada para *alocação dinâmica de memória*
 * cresce de endereços baixos para alto
 * controlada pelo programador com `malloc`, `calloc`, `realloc`, e `free`
 * perfeita para estruturas de dados que mudam de tamanho como listas, árvores, grafos
@@ -98,22 +100,22 @@ ex.) funções compiladas, inclusive `main()`
 
 ### tipos de gerenciamento de memória
 
-**alocação**: reservar espaço na memória
+1. **alocação**: reservar espaço na memória
 em C, para a heap, usamos:
 * `malloc`: aloca um bloco sem inicializar
 * `calloc`: aloca e inicializa com 0
 * `realloc`: redimensiona um bloco existente
 * `free`: libera um bloco previamente alocado
 
-**realocação**: aumentar ou reduzir o tamanho de um bloco já alocado
+2. **realocação**: aumentar ou reduzir o tamanho de um bloco já alocado
 usamos `realloc(ptr, novo_tamanho)`
 ```c
 int* nums = malloc(5 * sizeof(int));
 // agora quero 10 posições
-nums = realloc(nums. 10 * sizeof(int));
+nums = realloc(nums, 10 * sizeof(int));
 ```
 
-**desalocação (dealocar)**
+3. **desalocação (dealocar)**
 liberar a memória para que o sistema possa usá-la novamente
 feita com `free`
 ```c
@@ -153,15 +155,3 @@ int main() {
     return 0;
 }
 ```
----
-## memória estática e memória dinâmica
-essa é uma classificação prática, focada em como a memória é gerenciada no tempo de execução, e não em todas as regiões da memória (como stack, heap, etc)
-
-### static memory
-aqui, static não significa só a palavra-chave `static`, mas sim qualquer memória que o compilador aloca em tempo de compilação ou de forma fixa no início da execução
-inclui:
-* variáveis globais
-* variáveis estáticas locais
-* constantes
-* funções
-* em muitas definições, também incluir a stack

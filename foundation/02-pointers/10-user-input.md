@@ -130,6 +130,7 @@ fgets(nome_do_array, tamanho, stdin);
 
 * `stdin` é a abreviação de **standard input** (entrada padrão), e representa onde o programa lê dados digitados pelo usuário - normalmente o teclado
     * tecnicamente, `stdin` é uma stream de dados do tipo `FILE *` (um ponteiro para uma estrutura que representa um fluxo de dados), já aberta automaticamente quando o programa começa
+    (para saber mais sobre streams em C acesse no rep: /extras/05-strams.md)
 
 ex)
 ```c
@@ -174,21 +175,3 @@ aqui a função está fazendo o seguinte:
 3. quando encontra `\n`, ele para
 4. retorna o número de caracteres que leu até ali -> o valor corresponde exatamente ao índice de `\n`
 
----
-#### **uma breve introdução a streams**
-no contexto da linguagem C, uma stream é uma **abstração de fluxo contínuo de dados** - seja ele vindo *de* ou indo *para* algum lugar (como teclado, tela, arquivo, etc.)
-
-> pensa numa stream como **um cano por onde os dados passam**, e seu programa só se preocupa em ler ou escrever nesse cano, em saber *como* ou *onde* os dados estão de verdade
-
-existem 3 streams padrões em C, abertas automaticamente quando o programa começa:
-| stream  | nome     | usada para...     | tipo em C |
-| ------- | -------- | ----------------- | --------- |
-| entrada | `stdin`  | ler do teclado    | `FILE *`  |
-| saída   | `stdout` | escrever na tela  | `FILE *`  |
-| erro    | `stderr` | mensagens de erro | `FILE *`  |
-
-* stream em C é um ponteiro para uma estrutura de dados do tipo `FILE`, com funções da lib padrão `<stdio.h>` inclusas no cabeçalho
-* C trata arquivos, teclados, telas... tudo como um fluxo de bytes sequenciais, e você acessa esses fluxos usando funções, como:
-    * `fgetc()`, `fgets()` - leitura
-    * `fputc()`, `fputs()`, `fprintf()` - escrita
-    todas essas funções usam uma stream como argumento (`stdin`, `stdout`, `stderr`, ou outras são abertas com `fopen()`)

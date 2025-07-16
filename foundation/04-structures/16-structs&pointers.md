@@ -91,5 +91,5 @@ strcpy(p2->nome, "Nova milena");
 
 printf("%s\n", p1.nome); // "nova milena"
 ```
-* isso produz o mesmo resultado, mas em C você decide manualmente se quer usar ponteiros o não
+* isso produz o mesmo resultado, mas em C você decide manualmente se quer usar ponteiros ou não
 * em Java você não tem opção, objetos são sempre armazenados na heap e acessados por referência

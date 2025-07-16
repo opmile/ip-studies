@@ -36,6 +36,26 @@ int main() {
 ```
 * macros com parâmetros funcionam como atalhos, mas tome cuidado com os parênteses para evitar erros
 
+é importante ressaltar que as diretivas de pré-processamento não são variáveis e não pcupam espaço na memória. nos exemplos acima `PI` e `SQUARE(x)` são apenas um apelido textual temporário
+
+### comparação com `const`
+**`#define`**
+* substituição textual antes da compilação
+* sem tipo
+* não ocupa memória
+
+**`const`**
+* é uma variável constante
+* tem tipo
+* ocupa espaço em memória
+
+```c
+#define PRO 100
+//
+const int PRO = 100;
+```
+muitos preferem `const` a `#define` para constantes, porque `const` respeita o compilador e tem verificação de tipo
+
 ### compilação condicional - `#ifdef` e `#ifndef`
 as diretivas `#ifdef` e `#ifndef` permitem a inclusão ou o salto de partes de código dependendo se um macro está ou não definido no escopo
 * a compilação condicional é útil para debuggar ou criar diferentes versões do programa

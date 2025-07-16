@@ -97,7 +97,7 @@ printf("preço final: %c%.2f", total_cost);
 ```
 
 ### conversão de tipos de dados
-converter um tipo de dado em outro é conhecido como conversão de tipo
+converter um tipo de dado em outro é conhecido como *conversão de tipo* (type casting)
 
 tentar dividir `5` por `2` resulta em `2.5`, mas como estamos trabalhando com inteiros (e não pontos flutuantes) o exemplo a seguir resulta apenas em `2`
 ```c
@@ -115,10 +115,10 @@ feita automaticamente pelo compilador quando atribuimos um valor de um tipo para
 ```c
 float myFloat = 9; // conversão automática: int para float
 
-printf("%f", myFloat); // 9.0;
+printf("%.1f", myFloat); // 9.0
 ```
 o compilador automaticamente converteu o `int` `9` no valor `float` de `9.000000`
-* esse tipo de conversão de torna arriscada quando o programa cresce e se perde o controle de valores específicos in determinadas situações. observe:
+* esse tipo de conversão de torna arriscada quando o programa cresce e se perde o controle de valores específicos em determinadas situações. observe:
 ```c
 int myInt = 9.99;
 
@@ -161,7 +161,7 @@ float percentage = (float) userScore / maxScore * 100.0;
 
 printf("pontuação: %.1f", percentage);
 ```
-nesse exemplos estamos convertendo apenas o valor de `userScore` para `float`, antes da divisão acontecer. e isso já pe suficiente para forçar a divisão a ser feita com ponto flutuante, o que evita a divisão inteira, que truncaria o resultado
+nesse exemplos estamos convertendo apenas o valor de `userScore` para `float`, antes da divisão acontecer. e isso já é suficiente para forçar a divisão a ser feita com ponto flutuante, o que evita a divisão inteira, que truncaria o resultado
 
 ```c
 (float) userScore       // converte 432 -> 432.0 (float)
