@@ -1,10 +1,10 @@
 # acesso à memória dinâmica
-a **memória dinâmica se comporta como um array** criado em tempo de execução e com seu tipo de dado especificado pelo tipo do ponteiro
+a **memória dinâmica se comporta como um array** criado em *tempo de execução* e com seu tipo de dado especificado pelo tipo do ponteiro
 * assim como em arrays, para acessar um elemento na memória dinâmica, se refira a ele pelo seu número de índice
 ```c
 ptr[0] = 12;
 ```
-* você também pode desreferenciar o ponteiro para acesso seu primeiro elemento
+* você também pode desreferenciar o ponteiro para acessar seu primeiro elemento
 ```c
 *ptr = 12;
 ```
@@ -26,7 +26,7 @@ printf("%d %d %d", ptr[1], ptr[2], ptr[3]);
 ```
 
 ## uma nota sobre tipos de dados
-a memória dinâmica não possui seu próprio tipo de dado, é apenas uma sequência de bytes. o dado na memória pode ser interpretado com base no tipo de dado do seu ponteiro
+a memória dinâmica *não possui seu próprio tipo de dado*, é apenas uma *sequência de bytes*. o dado na memória pode ser interpretado com base no tipo de dado do seu ponteiro
 * nesse próximo exemplo, um ponteiro para 4 bytes pode ser interpretado como um elemento `int` (4 bytes) ou como um array de 4 `char` (1 byte cada)
 ```c
 int *ptr1 = malloc(4);
@@ -76,33 +76,35 @@ typedef struct {
 int main() {
     int qtd = 3;
 
-    Pessoa* lista_de_pessoas = malloc(qtd * sizeof(Pessoa));
+    Pessoa* lista = malloc(qtd * sizeof(Pessoa));
 
     if (lista == NULL) {
         printf("erro ao alocar memória\n");
         return 1
     }
 
-    strcpy(lista_de_pessoas->nome, "milena");
-    lista_de_pessoas->idade = 19;
+    strcpy(lista->nome, "milena");
+    lista->idade = 19;
 
-    strcpy((lista_de_pessoas + 1)->nome, "miguel");
-    (lista_de_pessoas + 1)->idade = 20;
+    strcpy((lista + 1)->nome, "miguel");
+    (lista + 1)->idade = 20;
 
-    strcpy(lista_de_pessoas[2].nome, "joaozinho")
-    lista_de_pessoas[2].idade = 21;
+    strcpy(lista[2].nome, "joaozinho")
+    lista[2].idade = 21;
 }
 
 ```
 * `lista->campo` === `(*lista).campo` === `lista[0].campo`
 
-* `(lista_de_pessoas + 1)->idade` != `*(lista_de_pessoas + 1)->idade`
-    * lista_de_pessoas + 1 → você anda para a próxima struct (ok).
-    * (lista_de_pessoas + 1)->nome → acessa o campo nome da segunda struct (ok).
-    * *(lista_de_pessoas + 1)->nome → aqui está o erro.
+* `(lista + 1)->idade` != `*(lista + 1)->idade`
+    * `lista + 1` → você anda para a próxima struct (ok).
+    * `(lista + 1)->nome` → acessa o campo nome da segunda struct (ok).
+    * `*(lista + 1)->nome` → aqui está o erro.
 
     * nome é um array de `char`, ou seja, `char nome[50]`
-    * quando voce faz `(lista_de_pessoas + 1)->nome`, isso tem tipo `char*` (porque arrays decaem para ponteiros)
+    * quando voce faz `(lista + 1)->nome`, isso tem tipo `char*` (porque arrays decaem para ponteiros)
     * se fizer `*` nesse ponteiro significa que você quer extrair o primeiro caractere da string
     * você estaria então passando um `char` como destino do `strcpy`, mas ele espera um ponteiro para `char`
+
+a sacada aqui é perceber que o ponteiro `lista` é um ponteiro de struct, então pode ser usado para acessar seus membros usando `->`, e que ainda é um array que armazena structs do tipo `Pessoa`, então a aritmética de deslocamento de ponteiros também vale porque `lista` é um ponteiro que aponta para o primeiro elemento da lista de pessoas
 

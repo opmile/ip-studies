@@ -75,13 +75,13 @@ int *ptr = NULL;
 porque `NULL` não é uma área de memória válida para escrita
 
 ## memory leak
-um vazamento de memória acontece quando a memória dinâmica é alocada mas nunca liberada
+um vazamento de memória acontece quando a **memória dinâmica é alocada mas nunca liberada**
 
 se um vazamento de memória acontece em um loop ou em uma função chamada frequentemente, pode ocupar muito espaço desnecessário e causar lentidão
 
-existe risco de vazamento de memória se um ponteiro que aponta para memória dinâmica é perdido antes da memória ser liberada. isso pode acontecer acidentalmente, então é importante ter cuidado e manter controle desse tipo de ponteiro
+existe *risco de vazamento de memória se um ponteiro que aponta para memória dinâmica é perdido antes da memória ser liberada*. isso pode acontecer acidentalmente, então é importante ter cuidado e manter controle desse tipo de ponteiro
 
-ex) o ponteiro é sobrescrito
+ex) *o ponteiro é sobrescrito*
 ```c
 int *ptr;
 ptr = calloc(2, sizeof(*ptr));
@@ -89,9 +89,9 @@ ptr = calloc(2, sizeof(*ptr));
 int x = 5;
 ptr = &x;
 ```
-* nesse exemplo, depois do ponteiro agora apontar para o endereço de `x`, a memória alocada por `calloc()` não pode mais ser acessada
+* nesse exemplo, depois do ponteiro agora apontar para o endereço de `x`, a memória alocada por `calloc()` não pode mais ser acessada e é perdida
 
-ex) ponteiro que existe apenas dentro da função
+ex) *ponteiro que existe apenas dentro da função*
 ```c
 void myFunction() {
     int *ptr;

@@ -61,8 +61,7 @@ endereços altos
 ```c
 int x = 10; // alocado na stack
 ```
-
-quando uma função é chamada, a memória stack aloca espaço para as variáveis locais da função. quando a função retorna, a memória stack é liberada
+quando uma função é chamada, a memória stack aloca espaço para suas variáveis locais. quando a função retorna, a memória stack é liberada
 * funções recursivas que se repetem muitas vezes podem ocupar muita espaço de memória stack. quando isso acontece, chamamos de **`stack overflow`**
 
 2. **heap (montão)**

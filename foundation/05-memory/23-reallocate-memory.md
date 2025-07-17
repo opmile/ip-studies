@@ -12,7 +12,7 @@ int *ptr2 = realloc(ptr1, size);
 a função `realloc()` tenta redimensionar a memória em `ptr1` e retorna o mesmo endereço de memória apontada por esse ponteiro. se não for possível redimensionar a memória no endereço correspondente, então ela alocará memória em um endereço diferente e retornará o novo endereço
 
 quando `relloc()` retorna um enderço de memória diferente, a memória no endereço original não é mais reservada e não é mais segura de ser usada
-* quando realocação é feita é uma boa recomendação atribuir um novo ponteiro para a variável anterior, para que o antigo ponteiro não seja usado acidentalmente
+* quando realocação é feita, uma boa recomendação é atribuir um novo ponteiro para a variável anterior, para que o antigo ponteiro não seja usado acidentalmente
 
 ```c
 int *ptr1, *ptr2, size;
@@ -26,6 +26,8 @@ printf("%d bytes alocados no endereço: %p \n", size, ptr1);
 // redimensionando o espaço para armazenar 6 inteiros
 size = 6 * sizeof(*ptr1);
 ptr2 = realloc(ptr1, size);
+
+ptr1 = NULL;
 
 printf("%d bytes alocados no endereço: %p \n", size, ptr2);
 ```

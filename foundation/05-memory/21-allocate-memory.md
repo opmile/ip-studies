@@ -1,5 +1,6 @@
 # alocação de memória
-o processo de revervar memória é chamado de alocação. a forma de alocação depende do tipo de memória
+o processo de reservar memória é chamado de alocação
+a forma de alocação depende do tipo de memória
 
 ## memória estática e memória dinâmica
 essa é uma classificação prática, *focada em como a memória é gerenciada no tempo de execução*, e não em todas as regiões da memória (como stack, heap, etc)
@@ -129,7 +130,7 @@ ptr2 = calloc(1, sizeof(*ptr2));
 *cuidado!*
 * `sizeof(*ptr1)` indica ao C para pedir o tamanho dos dados naquele endereço. esquecer o operador de desreferenciação `*` significa medir o tamanho do ponteiro em si (tipicamente 8 bytes)
 
-note que a função `sizeof()` não consegue medir quanto de memíria dinâmica está sendo alocada
+note que a função `sizeof()` não consegue medir quanto de memória dinâmica está sendo alocada
 * é um operador em tempo de compilação (o compilador resolve ele antes de o programa rodar)
 * isso significa que o operador não tem como saber quantos bytes você pediu com `malloc()` ou `calloc()` porque essa informação não está associada ao ponteiro em si
 
