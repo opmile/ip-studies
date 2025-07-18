@@ -39,3 +39,11 @@ void setName(Person *p, char *name) {
 void setAge(Person *p, int number) {
     p->age = number;
 }
+
+/*
+1. nome[strcspn(nome, "\n")] = '\0';
+remove o \n que o fgets() pode colocar no final da string, limpando a  entrada do usuário antes de copiar ela pra p->nome
+
+2. p->nome[sizeof(p->nome) - 1] = '\0';
+porque strncpy não garante a terminação nula se a string original for maior ou igual ao tamanho do destino
+*/

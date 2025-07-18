@@ -381,6 +381,7 @@ oi, milena
 ```
 
 ex) garanta que o usuário insira um número como input
+
 ```c
 #include <stdio.h>
 
