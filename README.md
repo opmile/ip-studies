@@ -64,6 +64,12 @@ Este repositório é um registro vivo do meu desenvolvimento como desenvolvedora
 
 Aqui não se trata de copiar e colar. Trata-se de escrever para entender, para fixar e internalizar.
 
+## Resolução de Exercícios Práticos
+
+Acesse o repositório onde resolvo desafios de programação em C aplicando lógica, estruturas e algoritmos:
+
+[Acessar exercícios resolvidos](https://github.com/opmile/c-algorithms-)
+
 ---
 
 > *"Dominar C é como aprender a falar com o computador na linguagem nativa dele."*

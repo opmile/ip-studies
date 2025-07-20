@@ -22,12 +22,10 @@ projetos com modularização de código e persistência de dados em arquivos
 
 fortalecer os seguintes pontos:
 
-1. exercícios envolvendo matrizes dinâmicas
+1. exercícios envolvendo alocação e realocação de matrizes dinâmicas
 
 2. structs
 a) funções que recebem ponteiro de struct como parâmetro
 b) funções que manipulam um vetor de structs
 
 3. recursão
-
-4. realocação de vetores e matrizes dinâmicas
