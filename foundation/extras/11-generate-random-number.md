@@ -66,6 +66,7 @@ empurra esse intervalo para começar em `min`
 * isso transfor o intervalo de `[0, max - min]` em `[min, max]`
 
 3. **por que usamos *`+1`***
-porque quando você faz `rand() % n`, o resultado vai de `0` até `n-1`, então se você quer incluir o valor máximo no intervalo, você precisa aumentar o alcance em 1
+porque quando você faz `rand() % n`, o resultado vai de `0` até `n-1`, então se você quer incluir o valor máximo no intervalo, você precisa aumentar o alcance em 1. mas se lembre que ao mesmo tempo, estamos retirando o alcance do valor míninmo
 * pra pegar de 0 a 10: `rand() % 11`
+* pra pegar de 1 a 10: `rand() % 10 + 1`
 * se fosse só `rand() % 10`, seria 0 a 9

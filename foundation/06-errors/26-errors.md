@@ -205,7 +205,7 @@ erro ao abrir arquivo: No such file or directory
 ```
 
 ### usando `strerror()` and `errno`
-`errno` é uma variável glocal que armazena o código de erro da última operação falha. para usá-lo, você deve incluir `<errno.h>` para acessá-lo e `strerror(errno)` vai converter o código de erro em uma mensagem legível
+`errno` é uma variável global que armazena o código de erro da última operação falha. para usá-lo, você deve incluir `<errno.h>` para acessá-lo e `strerror(errno)` vai converter o código de erro em uma mensagem legível
 ```c
 #include <stdio.h>
 #include <errno.h>
