@@ -86,24 +86,28 @@ for (int i = 0; i < linhas; i++)
 14. **evite usar ponteiros após `realloc`, pois eles podem ter sido movidos.**
 * é importante verificar a necessidade de retornar um novo ponteiro para atualizar o ponteiro original
 
+15. **ponteiros de struct tem duplo sentido**
+* se uma função recebe um ponteiro de struct como parâmetro, ela pode estar lidando com um único struct ou um array de structs -  e você precisa entender pelo contexto
+* se vier acompanhado de um parâmetro `int n`, normalmente isso diz respeito ao tamanho de um array
+
 ---
 
 ### 🧠 **outros detalhes perigosos**
 
-15. **não esqueça o `return 0;` no `main()` (ou outro valor em caso de erro).**
+16. **não esqueça o `return 0;` no `main()` (ou outro valor em caso de erro).**
 
-16. **sempre inicialize variáveis locais antes de usar.**
+17. **sempre inicialize variáveis locais antes de usar.**
 
-17. **cuidado com o índice fora dos limites do array.**
+18. **cuidado com o índice fora dos limites do array.**
 * C não vai reclamar, só vai causar bugs invisíveis.
 
-18. **evite funções perigosas como `gets()` e `scanf("%s")`.**
+19. **evite funções perigosas como `gets()` e `scanf("%s")`.**
 * são vulneráveis a overflow.
 
-19. **evite usar `fflush(stdin)` em ambientes portáveis.**
+20. **evite usar `fflush(stdin)` em ambientes portáveis.**
 * comportamento indefinido fora do MSVC.
 
-20. **não modifique string literais.**
+21. **não modifique string literais.**
 ```c
 char *s = "teste";  // NÃO FAÇA: s[0] = 'T'; --> crash
 ```
