@@ -7,9 +7,9 @@ funcionarios[0] = {"Milena Oliveira", 19, 1200.00, &departamentos[0]}; // ERRO!
 
 a forma corre seria:
 ```c
-funcionarios[0] = (Funcionario){"Milena Oliveira", 19, 1200.00, &departamentos[0]}; // ERRO!
+funcionarios[0] = (Funcionario){"Milena Oliveira", 19, 1200.00, &departamentos[0]}; 
 ```
-essa construção se chama designated compound literal com cast de struct
+essa construção se chama *designated compound literal com cast de struct*
 
 `(Funcionario){...}` cria um valor temporário do tipo `Funcionario` preenchido com os valores fornecidos, e o atribui diretamente à posição `funcionarios[0]`
 * como se fosse um `malloc + preenchimento` tudo de uma vez, só que direto na stack (e sem alocação)
@@ -81,7 +81,6 @@ Funcionario f = {
     {"Tecnologia da Informação", "TI", 101}
 };
 ```
-
 
 agora com array de struct e atribuição por índice:
 ```c
