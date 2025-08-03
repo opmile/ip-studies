@@ -169,7 +169,7 @@ for (int i = 1; i <= 10; i++) {
 **`break`**
 o primeiro caso de uso do `break` foi visto durante os estudos de `switch`, em que o usamos para sair imediatamente do bloco `switch` quando a condição foi satisfeita
 
-o `break` é, na verdade, mais comumente usado para sair de um loop
+o `break` é, na verdade, mais comumente
 
 ```c
 for (int i = 0; i < 10; i++) {
